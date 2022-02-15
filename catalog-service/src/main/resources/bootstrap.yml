@@ -1,0 +1,26 @@
+server:
+  port: 8181
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  application:
+    name: catalog-service
+  cloud:
+    vault:
+      scheme: http
+      host: localhost
+      port: 8200
+      token: s.6bXo14NZFowsY5PoitH47tPi
+      authentication: token
+eureka:
+  instance:
+    hostname: catalog-service
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
