@@ -33,16 +33,16 @@ spring:
           predicates:
             - Path=/catalog/**
           filters:
-            name: CircuitBreaker
-            args:
-              name: catalog-service
-              fallbackuri: forward:/catalogFallBack
+            - name: CircuitBreaker
+              args:
+                name: catalog-service
+                fallbackUri: forward:/catalogFallBack
         - id: inventory-service
           uri: lb://inventory-service
           predicates:
             - Path=/inventory/**
           filters:
-            name: CircuitBreaker
-            args:
-              name: inventory-service
-              fallbackuri: forward:/inventoryFallBack
+            - name: CircuitBreaker
+              args:
+                name: inventory-service
+                fallbackUri: forward:/inventoryFallBack
