@@ -18,6 +18,7 @@
         <option value="$USER_HOME$/Downloads/shoppingcart-API-gateway/pom.xml" />
         <option value="$USER_HOME$/Downloads/cloud-gateway-service/pom.xml" />
         <option value="$PROJECT_DIR$/cloud-gateway-service/pom.xml" />
+        <option value="$USER_HOME$/Downloads/Hystrix-fallback/pom.xml" />
       </list>
     </option>
   </component>

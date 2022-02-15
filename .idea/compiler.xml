@@ -11,17 +11,20 @@
         <module name="inventory-service" />
         <module name="catalog-service" />
         <module name="cloud-gateway-service" />
+        <module name="Hystrix-fallback" />
         <module name="Message-service" />
         <module name="service-registry" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Hystrix-fallback" target="1.8" />
       <module name="shoppingcart-API-gateway" target="1.8" />
       <module name="shoppingcart-ui" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Hystrix-fallback" options="-parameters" />
       <module name="Message-service" options="-parameters" />
       <module name="catalog-service" options="-parameters" />
       <module name="cloud-gateway-service" options="-parameters" />
