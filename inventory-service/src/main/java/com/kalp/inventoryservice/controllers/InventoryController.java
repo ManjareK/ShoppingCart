@@ -1,10 +1,12 @@
 package com.kalp.inventoryservice.controllers;
 
+import brave.sampler.Sampler;
 import com.kalp.inventoryservice.entities.InventoryItem;
 import com.kalp.inventoryservice.repositories.InventoryItemRepository;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +19,14 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/inventory")
 @Slf4j
+
 public class InventoryController {
     private final InventoryItemRepository inventoryItemRepository;
+
+    @Bean
+    public Sampler defaultSampler() {
+        return Sampler.ALWAYS_SAMPLE;
+    }
 
     @Autowired
     public InventoryController(InventoryItemRepository inventoryItemRepository) {

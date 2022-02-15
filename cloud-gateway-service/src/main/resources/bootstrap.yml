@@ -1,0 +1,48 @@
+server:
+  port: 9898
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    config:
+      discovery:
+        enabled: true
+  application:
+    name: gateway-service
+eureka:
+  instance:
+    hostname: localhost
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    register-with-eureka: true
+
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: catalog-service
+          uri: lb://catalog-service
+          predicates:
+            - Path=/catalog/**
+          filters:
+            name: CircuitBreaker
+            args:
+              name: catalog-service
+              fallbackuri: forward:/catalogFallBack
+        - id: inventory-service
+          uri: lb://inventory-service
+          predicates:
+            - Path=/inventory/**
+          filters:
+            name: CircuitBreaker
+            args:
+              name: inventory-service
+              fallbackuri: forward:/inventoryFallBack

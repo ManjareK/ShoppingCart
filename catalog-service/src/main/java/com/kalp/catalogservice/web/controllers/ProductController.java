@@ -1,10 +1,12 @@
 package com.kalp.catalogservice.web.controllers;
 
+import brave.sampler.Sampler;
 import com.kalp.catalogservice.entities.Product;
 import com.kalp.catalogservice.exceptions.ProductNotFoundException;
 import com.kalp.catalogservice.services.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,11 +16,16 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/catalog")
 @Slf4j
 public class ProductController
 {
     private final ProductService productService;
+
+    @Bean
+    public Sampler defaultSampler() {
+        return Sampler.ALWAYS_SAMPLE;
+    }
 
     @Autowired
     public ProductController(ProductService productService) {
@@ -30,7 +37,7 @@ public class ProductController
         return productService.findAllProducts();
     }
 
-    @GetMapping("/{code}")
+    @GetMapping("/products/{code}")
     public Product productByCode(@PathVariable String code) {
         return productService.findProductByCode(code)
                 .orElseThrow(() -> new ProductNotFoundException("Product with code ["+code+"] doesn't exist"));
