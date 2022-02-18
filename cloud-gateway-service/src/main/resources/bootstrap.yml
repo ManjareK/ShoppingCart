@@ -1,3 +1,4 @@
+
 server:
   port: 9898
 management:
@@ -10,9 +11,13 @@ management:
         enabled: true
   application:
     name: gateway-service
+  metrics:
+    binders:
+      hystrix:
+        enabled: false
 eureka:
   instance:
-    hostname: localhost
+    hostname: gateway-service
     instance-id: ${eureka.instance.hostname}:${server.port}
   client:
     register-with-eureka: true
@@ -46,3 +51,5 @@ spring:
               args:
                 name: inventory-service
                 fallbackUri: forward:/inventoryFallBack
+  application:
+    name: gateway-service

@@ -5,6 +5,12 @@ management:
     web:
       exposure:
         include: "*"
+  metrics:
+    web:
+      server:
+        request:
+          autotime:
+            enabled: false
 spring:
   application:
     name: inventory-service
@@ -13,7 +19,7 @@ spring:
       scheme: http
       host: localhost
       port: 8200
-      token: s.6bXo14NZFowsY5PoitH47tPi
+      token: s.HoFrCRtyeEQdvUSg1UlSqPUI
       authentication: token
 eureka:
   instance:
