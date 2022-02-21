@@ -1,0 +1,94 @@
+version: '3'
+services:
+  mysqldb:
+    image: mysql:5.7
+    container_name: mysqldb
+    ports:
+      - "3306:3306"
+    environment:
+     MYSQL_ROOT_PASSWORD: Root@123
+     MYSQL_DATABASE: catalog
+    depends_on:
+      - setup-vault
+
+  vault:
+    image: vault:1.4.0
+    container_name: vault
+    cap_add:
+      - IPC_LOCK
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: spycjAioSYaD3YKZ37ipsvuRx
+    ports:
+      - 8200:8200
+
+  setup-vault:
+    image: vault:1.4.0
+    container_name: setup-vault
+    entrypoint: /bin/sh
+    volumes:
+      - './config:/config'
+
+    command: >
+      -c "
+      sleep 2;
+      /config/vault-init.sh;
+      "
+    depends_on:
+      - vault
+    environment:
+      VAULT_API_ADDR: 'http://vault:8200'
+      VAULT_ADDR: 'http://vault:8200'
+      CONFIG_DIR: '/config'
+
+  config-server:
+    container_name: config-server
+    build: ./config-server
+    ports:
+      - "8888:8888"
+      - "18787:8787"
+
+  service-registry:
+    container_name: service-registry
+    build: ./service-registry
+    ports:
+      - "8761:8761"
+      - "28787:8787"
+    depends_on:
+      - config-server
+
+  gateway-service:
+    container_name: gateway-service
+    build: ./gateway-service
+    ports:
+      - "9898:9898"
+      - "38787:8787"
+    depends_on:
+      - config-server
+      - service-registry
+
+  catalog-service:
+    container_name: catalog-service
+    build: ./catalog-service
+    ports:
+      - "8181:8181"
+      - "19797:8787"
+    depends_on:
+      - config-server
+      - setup-vault
+      - gateway-service
+      - service-registry
+      - mysqldb
+
+  inventory-service:
+    container_name: inventory-service
+    build: ./inventory-service
+    ports:
+      - "8484:8484"
+      - "29797:8787"
+    depends_on:
+      - config-server
+      - setup-vault
+      - gateway-service
+      - mysqldb
+  
+ 

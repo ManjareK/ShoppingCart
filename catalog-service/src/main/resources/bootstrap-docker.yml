@@ -1,5 +1,5 @@
 server:
-  port: 8484
+  port: 8181
 management:
   endpoints:
     web:
@@ -13,25 +13,20 @@ management:
             enabled: false
 spring:
   application:
-    name: inventory-service
+    name: catalog-service
   cloud:
     vault:
       scheme: http
-      host: localhost
+      host: vault
       port: 8200
-      token: s.oAn5PoZSJN3o5yrXkHwUErQ2
+      token: spycjAioSYaD3YKZ37ipsvuRx
       authentication: token
     discovery:
       enabled: true
     loadbalancer:
       enabled: true
-      gateway:
-        discovery:
-          locator:
-            enabled: true
-            lower-case-service-id: true
     config:
-      uri: http://localhost:8888
+      uri: http://config-server:8888
 eureka:
   instance:
     hostname: localhost
@@ -40,5 +35,5 @@ eureka:
   client:
     register-with-eureka: true
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://service-registry:8761/eureka/
     fetch-registry: true

@@ -7,19 +7,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="config-server" />
-        <module name="Shopping-cart" />
         <module name="inventory-service" />
+        <module name="gateway-service" />
         <module name="catalog-service" />
-        <module name="cloud-gateway-service" />
         <module name="Hystrix-fallback" />
         <module name="Message-service" />
         <module name="service-registry" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Hystrix-fallback" target="1.8" />
       <module name="shoppingcart-API-gateway" target="1.8" />
       <module name="shoppingcart-ui" target="1.8" />
+      <module name="zipkin-server" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -27,12 +26,13 @@
       <module name="Hystrix-fallback" options="-parameters" />
       <module name="Message-service" options="-parameters" />
       <module name="catalog-service" options="-parameters" />
-      <module name="cloud-gateway-service" options="-parameters" />
       <module name="config-server" options="-parameters" />
+      <module name="gateway-service" options="-parameters" />
       <module name="inventory-service" options="-parameters" />
       <module name="service-registry" options="-parameters" />
       <module name="shoppingcart-API-gateway" options="-parameters" />
       <module name="shoppingcart-ui" options="-parameters" />
+      <module name="zipkin-server" options="-parameters" />
     </option>
   </component>
 </project>

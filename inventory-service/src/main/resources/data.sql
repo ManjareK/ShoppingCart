@@ -1,3 +1,11 @@
+CREATE TABLE IF NOT EXISTS `inventory` (
+
+                                          `id` int(11) NOT NULL auto_increment,
+                                          `product_code`  varchar(250) NOT NULL default '',
+                                          `quantity` int(11)  NULL,
+                                          PRIMARY KEY  (`id`)
+);
+
 DELETE FROM inventory;
 
 insert into inventory(id, product_code, quantity) VALUES

@@ -1,3 +1,15 @@
+CREATE TABLE IF NOT EXISTS `products` (
+
+    `id` int(11) NOT NULL auto_increment,
+    `code` varchar(50)  NOT NULL default '',
+    `name`  varchar(50) NOT NULL default '',
+    `description`  varchar(250) NOT NULL default '',
+    `price` int(11)  NULL,
+    PRIMARY KEY  (`id`)
+    );
+
+CREATE TABLE IF NOT EXISTS hibernate_sequence(next_val bigint);
+
 DELETE FROM products;
 
 insert into products(id, code, name, description, price) VALUES

@@ -5,6 +5,11 @@ spring:
     config:
       server:
         git:
+          label: main
           uri: https://github.com/ManjareK/microservices-config-repo
+        bootstrap: true
+      enabled: true
+
+
 server:
   port: 8888

@@ -5,6 +5,12 @@ management:
     web:
       exposure:
         include: "*"
+  metrics:
+    web:
+      server:
+        request:
+          autotime:
+            enabled: false
 spring:
   application:
     name: catalog-service
@@ -13,14 +19,21 @@ spring:
       scheme: http
       host: localhost
       port: 8200
-      token: s.HoFrCRtyeEQdvUSg1UlSqPUI
+      token: s.oAn5PoZSJN3o5yrXkHwUErQ2
       authentication: token
+    discovery:
+      enabled: true
+    loadbalancer:
+      enabled: true
+    config:
+      uri: http://localhost:8888
 eureka:
   instance:
-    hostname: catalog-service
+    hostname: localhost
     prefer-ip-address: true
     instance-id: ${eureka.instance.hostname}:${server.port}
   client:
     register-with-eureka: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
+    fetch-registry: true
