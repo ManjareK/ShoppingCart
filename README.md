@@ -98,13 +98,13 @@ Ex: `Shopping-cart> ./run.sh start catalog-service`
 Sample Test API URL
 
 Individual API URL
-    1. http://localhost:8484/inventory/api/P001
-    2. http://localhost:8484/inventory
-    3. http://localhost:8181/catalog/products/P001
-    4. http://localhost:8181/catalog
+1. http://localhost:8484/inventory/api/P001
+2. http://localhost:8484/inventory
+3. http://localhost:8181/catalog/products/P001
+4. http://localhost:8181/catalog
 
 API Gateway URL
-    1. http://localhost:9898/inventory/api/P001
-    2. http://localhost:9898/inventory
-    3. http://localhost:9898/catalog/products/P001
-    4. http://localhost:9898/catalog
+1. http://localhost:9898/inventory/api/P001
+2. http://localhost:9898/inventory
+3. http://localhost:9898/catalog/products/P001
+4. http://localhost:9898/catalog
