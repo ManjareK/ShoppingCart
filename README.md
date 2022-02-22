@@ -6,32 +6,33 @@ Micro-Services architecture for Shopping cart. This repository deals with the mi
 The entire site is segregated as services based on the different business functionalities the website caters.
 
 #Tech Stack
-Java 8
-Spring Boot
-Eureka Service discovery
-Spring Cloud config server
-Spring Cloud API Gateway
-Slueth
-Feign Client
-Resilience4j (Circuit Breaker)
-Docker
-JPA
-MySQL
-GitHub
-Vault
+* Java 8
+* Spring Boot
+* MicroService Architecture
+* Eureka Service discovery
+* Spring Cloud config server
+* Spring Cloud API Gateway
+* Slueth
+* Feign Client
+* Resilience4j (Circuit Breaker)
+* Docker
+* JPA
+* MySQL
+* GitHub
+* Vault
 
 To use this repository follow the steps given below
 
 Github Repositories
 1. Clone the repositories to you local drive.
 2. Start the individual services in this order
-       a. Config Server - Modify the properties file location to your local git/git repository.
-       b. Vault  - Create secrets and vault setup
-       c. Service registry - Register the services to eureka 
-       d. gateway service
-       e. mySql : Database startup and setup (Run data.sql files)
-       f. catalog-service 
-       g. inventory-Service
+   1. Config Server - Modify the properties file location to your local git/git repository.
+   2. Vault  - Create secrets and vault setup
+   3. Service registry - Register the services to eureka
+   4. gateway service
+   5. mySql : Database startup and setup (Run data.sql files)
+   6. catalog-service
+   7. inventory-Service
 ## How to run?
 
 ### Build all modules:
