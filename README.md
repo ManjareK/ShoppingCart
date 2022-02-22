@@ -95,7 +95,7 @@ Ex: `Shopping-cart> ./run.sh start catalog-service`
     * URL: http://localhost:8484
 
 
-Sample Test API URL
+Sample Test
 
 Individual API URL
 1. http://localhost:8484/inventory/api/P001
