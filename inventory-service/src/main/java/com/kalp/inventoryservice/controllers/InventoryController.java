@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -33,7 +34,7 @@ public class InventoryController {
         this.inventoryItemRepository = inventoryItemRepository;
     }
 
-    @GetMapping("/api/inventory/{productCode}")
+    @GetMapping("/api/{productCode}")
     public ResponseEntity<InventoryItem> findInventoryByProductCode(@PathVariable("productCode") String productCode) {
         log.info("Finding inventory for product code :"+productCode);
         Optional<InventoryItem> inventoryItem = inventoryItemRepository.findByProductCode(productCode);
@@ -42,5 +43,11 @@ public class InventoryController {
         } else {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("")
+    public List<InventoryItem> getInventory() {
+        log.info("Finding inventory for all products ");
+        return inventoryItemRepository.findAll();
     }
 }

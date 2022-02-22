@@ -1,3 +1,7 @@
+CREATE DATABASE IF NOT EXISTS `catalog`;
+
+use catalog;
+
 CREATE TABLE IF NOT EXISTS `products` (
 
     `id` int(11) NOT NULL auto_increment,
