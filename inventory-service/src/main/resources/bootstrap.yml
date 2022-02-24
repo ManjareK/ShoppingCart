@@ -19,7 +19,7 @@ spring:
       scheme: http
       host: localhost
       port: 8200
-      token: s.oAn5PoZSJN3o5yrXkHwUErQ2
+      token: s.tPqMNrTKuHQUXeisvYpESeP9
       authentication: token
     discovery:
       enabled: true
