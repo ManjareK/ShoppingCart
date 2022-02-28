@@ -35,6 +35,7 @@ Github Repositories
    7. inventory-Service
 ## How to run?
 
+
 ### Build all modules:
 
 `Shopping-cart> ./mvnw clean package -DskipTests=true`
@@ -56,6 +57,11 @@ Github Repositories
 **Docker:** `Shopping-cart> ./run.sh start <service>`
 
 Ex: `Shopping-cart> ./run.sh start catalog-service`
+
+**if starting in Local :**
+      1. Install and setup Vault (https://www.vaultproject.io/)
+      2. Replace token in application yml files (Catalog and inventory service)
+      3. Add username and password in vault (sample json from config)
 
 
 * MySQL container:
